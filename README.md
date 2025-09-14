@@ -344,10 +344,3 @@ public static int[] findAll(int[] arr, int x) {
     return indices;
 }
 ```
-
----
-
-
----
-
-Для использования скопируйте содержимое этого файла в файл `README.md` в корне вашего репозитория на GitHub.

@@ -188,11 +188,14 @@ public class Methods {
   }
 
   public static int[] parseArray(String input) {
-    String[] parts = input.split(" ");       // Разбиваем строку на части
-    int[] result = new int[parts.length];    // Создаем массив для чисел
+    if (input.trim().isEmpty()) {
+      return new int[0];
+    }
+    String[] parts = input.trim().split("\\s+");
+    int[] result = new int[parts.length];
 
     for (int i = 0; i < parts.length; i++) {
-      result[i] = Integer.parseInt(parts[i]); // Преобразуем каждую строку в число
+      result[i] = Integer.parseInt(parts[i]);
     }
 
     return result;

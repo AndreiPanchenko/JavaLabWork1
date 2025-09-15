@@ -318,6 +318,10 @@ public class Main {
           System.out.println("Введите массив (через пробел):");
           scanner.nextLine();
           int[] arr = Methods.parseArray(scanner.nextLine());
+          if (arr.length == 0) {
+            System.out.println("Ошибка: массив не может быть пустым!");
+            break;
+          }
           System.out.print("Введите искомый элемент: ");
           int target = scanner.nextInt();
           System.out.println("Индекс: " + Methods.findFirst(arr, target));
@@ -330,6 +334,10 @@ public class Main {
           System.out.println("Введите массив (через пробел):");
           scanner.nextLine();
           int[] arr2 = Methods.parseArray(scanner.nextLine());
+          if (arr2.length == 0) {
+            System.out.println("Ошибка: массив не может быть пустым!");
+            break;
+          }
           System.out.println("Макс. по модулю: " + Methods.maxAbs(arr2));
           break;
         case 3:
@@ -343,8 +351,22 @@ public class Main {
           int[] mainArr = Methods.parseArray(scanner.nextLine());
           System.out.println("Введите массив для вставки (через пробел):");
           int[] insArr = Methods.parseArray(scanner.nextLine());
+
+          // Проверка на пустые массивы
+          if (mainArr.length == 0 && insArr.length == 0) {
+            System.out.println("Ошибка: оба массива не могут быть пустыми!");
+            break;
+          }
+
           System.out.print("Введите позицию: ");
           int pos = scanner.nextInt();
+
+          // Проверка корректности позиции
+          if (pos < 0 || pos > mainArr.length) {
+            System.out.println("Ошибка: позиция должна быть в диапазоне от 0 до " + mainArr.length);
+            break;
+          }
+
           System.out.println("Результат: " + Arrays.toString(Methods.add(mainArr, insArr, pos)));
           break;
         case 4:
@@ -355,6 +377,10 @@ public class Main {
           System.out.println("Введите массив (через пробел):");
           scanner.nextLine();
           int[] arr3 = Methods.parseArray(scanner.nextLine());
+          if (arr3.length == 0) {
+            System.out.println("Ошибка: массив не может быть пустым!");
+            break;
+          }
           System.out.println("Перевёрнутый: " + Arrays.toString(Methods.reverseBack(arr3)));
           break;
         case 5:
@@ -365,6 +391,10 @@ public class Main {
           System.out.println("Введите массив (через пробел):");
           scanner.nextLine();
           int[] arr4 = Methods.parseArray(scanner.nextLine());
+          if (arr4.length == 0) {
+            System.out.println("Ошибка: массив не может быть пустым!");
+            break;
+          }
           System.out.print("Введите искомый элемент: ");
           int target2 = scanner.nextInt();
           System.out.println("Индексы: " + Arrays.toString(Methods.findAll(arr4, target2)));

@@ -137,18 +137,24 @@ public static int sum2(int x, int y) {
 
 **Метод решения:**
 ```java
-public static String day(int x) {
-    // Используем switch для сопоставления чисел с днями недели
-    switch (x) {
-        case 1: return "понедельник";
-        case 2: return "вторник";
-        case 3: return "среда";
-        case 4: return "четверг";
-        case 5: return "пятница";
-        case 6: return "суббота";
-        case 7: return "воскресенье";
-        default: return "это не день недели";
-    }
+    public static String day(int x) {
+        if (x == 1) {
+            return "понедельник";
+        } else if (x == 2) {
+            return "вторник";
+        } else if (x == 3) {
+            return "среда";
+        } else if (x == 4) {
+            return "четверг";
+        } else if (x == 5) {
+            return "пятница";
+        } else if (x == 6) {
+            return "суббота";
+        } else if (x == 7) {
+            return "воскресенье";
+        } else {
+            return "это не день недели";
+        }
 }
 ```
 

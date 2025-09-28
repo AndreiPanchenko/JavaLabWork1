@@ -256,10 +256,13 @@ public void rightTriangle(int x) {
 ```java
 public int findFirst(int[] arr, int x) {
     for (int i = 0; i < arr.length; i++) {
-        if (arr[i] == x) return i;
+      if (arr[i] == x) {
+        return i;
+      }
     }
+    System.out.println("Элемент " + x + " не найден в массиве");
     return -1;
-}
+  }
 ```
 **Принцип работы:** Линейный поиск по массиву.
 

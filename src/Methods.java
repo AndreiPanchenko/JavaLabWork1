@@ -83,20 +83,20 @@ public class Methods {
 
   // Возвращает строку с числами от 0 до x включительно
   public String listNums(int x) {
-    StringBuilder sb = new StringBuilder();
+    String result = "";
     for (int i = 0; i <= x; i++) {
-      sb.append(i).append(" ");
+      result += i + " ";
     }
-    return sb.toString().trim();
+    return result.trim();
   }
 
   // Возвращает строку с четными числами от 0 до x
   public String chet(int x) {
-    StringBuilder sb = new StringBuilder();
+    String result = "";
     for (int i = 0; i <= x; i += 2) {
-      sb.append(i).append(" ");
+      result += i + " "; 
     }
-    return sb.toString().trim();
+    return result.trim();
   }
 
   // Подсчитывает количество цифр в числе
@@ -217,4 +217,5 @@ public int findFirst(int[] arr, int x) {
     return result;
   }
 }
+
 

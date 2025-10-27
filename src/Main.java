@@ -34,9 +34,10 @@ public class Main {
           conditionsMenu(scanner, methods);
           break;
         case 3:
-          loopsMenu(scanner, methods); ;
+          loopsMenu(scanner, methods);
+          break;
         case 4:
-          arraysMenu(scanner, methods); // Меню массивов
+          arraysMenu(scanner, methods);
           break;
         case 0:
           System.out.println("Выход из программы...");
@@ -47,6 +48,49 @@ public class Main {
     } while (mainChoice != 0);
 
     scanner.close();
+  }
+
+  // ========== ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ ДЛЯ ПРОВЕРКИ ВВОДА ==========
+
+  private static int readInt(Scanner scanner, String prompt) {
+    System.out.print(prompt);
+    while (!scanner.hasNextInt()) {
+      System.out.println("Ошибка! Введите целое число.");
+      scanner.next();
+      System.out.print(prompt);
+    }
+    return scanner.nextInt();
+  }
+
+  private static double readDouble(Scanner scanner, String prompt) {
+    System.out.print(prompt);
+    while (!scanner.hasNextDouble()) {
+      System.out.println("Ошибка! Введите число.");
+      scanner.next();
+      System.out.print(prompt);
+    }
+    return scanner.nextDouble();
+  }
+
+  private static long readLong(Scanner scanner, String prompt) {
+    System.out.print(prompt);
+    while (!scanner.hasNextLong()) {
+      System.out.println("Ошибка! Введите целое число.");
+      scanner.next();
+      System.out.print(prompt);
+    }
+    return scanner.nextLong();
+  }
+
+  private static char readChar(Scanner scanner, String prompt) {
+    System.out.print(prompt);
+    String input = scanner.next();
+    while (input.length() != 1 || !Character.isDigit(input.charAt(0))) {
+      System.out.println("Ошибка! Введите одну цифру.");
+      System.out.print(prompt);
+      input = scanner.next();
+    }
+    return input.charAt(0);
   }
 
   // ========== РАЗДЕЛ МЕТОДОВ ==========
@@ -60,46 +104,31 @@ public class Main {
       System.out.println("4. Диапазон");
       System.out.println("5. Равенство");
       System.out.println("0. Назад в главное меню");
-      System.out.print("Выберите задачу: ");
-
-      while (!scanner.hasNextInt()) {
-        System.out.println("Ошибка! Введите число от 0 до 5.");
-        scanner.next();
-      }
-      choice = scanner.nextInt();
+      choice = readInt(scanner, "Выберите задачу: ");
 
       switch (choice) {
         case 1:
-          System.out.print("Введите число: ");
-          double num = scanner.nextDouble();
+          double num = readDouble(scanner, "Введите число: ");
           System.out.println("Дробная часть: " + methods.fraction(num));
           break;
         case 2:
-          System.out.print("Введите цифру: ");
-          char digit = scanner.next().charAt(0);
+          char digit = readChar(scanner, "Введите цифру: ");
           System.out.println("Число: " + methods.charToNum(digit));
           break;
         case 3:
-          System.out.print("Введите число: ");
-          int num2 = scanner.nextInt();
+          int num2 = readInt(scanner, "Введите число: ");
           System.out.println("Результат: " + methods.is2Digits(num2));
           break;
         case 4:
-          System.out.print("Введите границу a: ");
-          int a = scanner.nextInt();
-          System.out.print("Введите границу b: ");
-          int b = scanner.nextInt();
-          System.out.print("Введите число num: ");
-          int num3 = scanner.nextInt();
+          int a = readInt(scanner, "Введите границу a: ");
+          int b = readInt(scanner, "Введите границу b: ");
+          int num3 = readInt(scanner, "Введите число num: ");
           System.out.println("Результат: " + methods.isInRange(a, b, num3));
           break;
         case 5:
-          System.out.print("Введите a: ");
-          int a2 = scanner.nextInt();
-          System.out.print("Введите b: ");
-          int b2 = scanner.nextInt();
-          System.out.print("Введите c: ");
-          int c = scanner.nextInt();
+          int a2 = readInt(scanner, "Введите a: ");
+          int b2 = readInt(scanner, "Введите b: ");
+          int c = readInt(scanner, "Введите c: ");
           System.out.println("Результат: " + methods.isEqual(a2, b2, c));
           break;
         case 0:
@@ -122,44 +151,34 @@ public class Main {
       System.out.println("4. Двойная сумма");
       System.out.println("5. День недели");
       System.out.println("0. Назад в главное меню");
-      System.out.print("Выберите задачу: ");
-
-      while (!scanner.hasNextInt()) {
-        System.out.println("Ошибка! Введите число от 0 до 5.");
-        scanner.next();
-      }
-      choice = scanner.nextInt();
+      choice = readInt(scanner, "Выберите задачу: ");
 
       switch (choice) {
         case 1:
-          System.out.print("Введите число: ");
-          int num = scanner.nextInt();
+          int num = readInt(scanner, "Введите число: ");
           System.out.println("Модуль: " + methods.abs(num));
           break;
         case 2:
-          System.out.print("Введите число: ");
-          int num2 = scanner.nextInt();
+          int num2 = readInt(scanner, "Введите число: ");
           System.out.println("Результат: " + methods.is35(num2));
           break;
         case 3:
-          System.out.print("Введите x: ");
-          int x = scanner.nextInt();
-          System.out.print("Введите y: ");
-          int y = scanner.nextInt();
-          System.out.print("Введите z: ");
-          int z = scanner.nextInt();
+          int x = readInt(scanner, "Введите x: ");
+          int y = readInt(scanner, "Введите y: ");
+          int z = readInt(scanner, "Введите z: ");
           System.out.println("Максимум: " + methods.max3(x, y, z));
           break;
         case 4:
-          System.out.print("Введите x: ");
-          int x2 = scanner.nextInt();
-          System.out.print("Введите y: ");
-          int y2 = scanner.nextInt();
+          int x2 = readInt(scanner, "Введите x: ");
+          int y2 = readInt(scanner, "Введите y: ");
           System.out.println("Сумма: " + methods.sum2(x2, y2));
           break;
         case 5:
-          System.out.print("Введите день недели (1-7): ");
-          int dayNum = scanner.nextInt();
+          int dayNum = readInt(scanner, "Введите день недели (1-7): ");
+          while (dayNum < 1 || dayNum > 7) {
+            System.out.println("Ошибка! День недели должен быть от 1 до 7.");
+            dayNum = readInt(scanner, "Введите день недели (1-7): ");
+          }
           System.out.println("День: " + methods.day(dayNum));
           break;
         case 0:
@@ -182,38 +201,43 @@ public class Main {
       System.out.println("4. Квадрат");
       System.out.println("5. Правый треугольник");
       System.out.println("0. Назад в главное меню");
-      System.out.print("Выберите задачу: ");
-
-      while (!scanner.hasNextInt()) {
-        System.out.println("Ошибка! Введите число от 0 до 5.");
-        scanner.next();
-      }
-      choice = scanner.nextInt();
+      choice = readInt(scanner, "Выберите задачу: ");
 
       switch (choice) {
         case 1:
-          System.out.print("Введите x: ");
-          int x = scanner.nextInt();
+          int x = readInt(scanner, "Введите x: ");
+          while (x < 0) {
+            System.out.println("Ошибка! Число должно быть неотрицательным.");
+            x = readInt(scanner, "Введите x: ");
+          }
           System.out.println("Результат: " + methods.listNums(x));
           break;
         case 2:
-          System.out.print("Введите x: ");
-          int x2 = scanner.nextInt();
+          int x2 = readInt(scanner, "Введите x: ");
+          while (x2 < 0) {
+            System.out.println("Ошибка! Число должно быть неотрицательным.");
+            x2 = readInt(scanner, "Введите x: ");
+          }
           System.out.println("Результат: " + methods.chet(x2));
           break;
         case 3:
-          System.out.print("Введите число: ");
-          long num = scanner.nextLong();
+          long num = readLong(scanner, "Введите число: ");
           System.out.println("Длина: " + methods.numLen(num));
           break;
         case 4:
-          System.out.print("Введите размер: ");
-          int size = scanner.nextInt();
+          int size = readInt(scanner, "Введите размер: ");
+          while (size < 0) {
+            System.out.println("Ошибка! Размер не может быть отрицательным.");
+            size = readInt(scanner, "Введите размер: ");
+          }
           methods.square(size);
           break;
         case 5:
-          System.out.print("Введите высоту: ");
-          int height = scanner.nextInt();
+          int height = readInt(scanner, "Введите высоту: ");
+          while (height < 0) {
+            System.out.println("Ошибка! Высота не может быть отрицательной.");
+            height = readInt(scanner, "Введите высоту: ");
+          }
           methods.rightTriangle(height);
           break;
         case 0:
@@ -236,13 +260,7 @@ public class Main {
       System.out.println("4. Возвратный реверс");
       System.out.println("5. Все вхождения");
       System.out.println("0. Назад в главное меню");
-      System.out.print("Выберите задачу: ");
-
-      while (!scanner.hasNextInt()) {
-        System.out.println("Ошибка! Введите число от 0 до 5.");
-        scanner.next();
-      }
-      choice = scanner.nextInt();
+      choice = readInt(scanner, "Выберите задачу: ");
 
       switch (choice) {
         case 1:
@@ -253,8 +271,7 @@ public class Main {
             System.out.println("Ошибка: массив не может быть пустым!");
             break;
           }
-          System.out.print("Введите искомый элемент: ");
-          int target = scanner.nextInt();
+          int target = readInt(scanner, "Введите искомый элемент: ");
           System.out.println("Индекс: " + methods.findFirst(arr, target));
           break;
         case 2:
@@ -277,8 +294,7 @@ public class Main {
             System.out.println("Ошибка: оба массива не могут быть пустыми!");
             break;
           }
-          System.out.print("Введите позицию: ");
-          int pos = scanner.nextInt();
+          int pos = readInt(scanner, "Введите позицию: ");
           if (pos < 0 || pos > mainArr.length) {
             System.out.println("Ошибка: позиция должна быть в диапазоне от 0 до " + mainArr.length);
             break;
@@ -303,8 +319,7 @@ public class Main {
             System.out.println("Ошибка: массив не может быть пустым!");
             break;
           }
-          System.out.print("Введите искомый элемент: ");
-          int target2 = scanner.nextInt();
+          int target2 = readInt(scanner, "Введите искомый элемент: ");
           System.out.println("Индексы: " + Arrays.toString(methods.findAll(arr4, target2)));
           break;
         case 0:

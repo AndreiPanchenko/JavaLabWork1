@@ -10,7 +10,7 @@ public class Methods {
 
   // Конвертирует символ-цифру в соответствующее число
   public int charToNum(char x) {
-    // Добавлена проверка на цифровой символ
+    // Проверка на цифровой символ
     if (!Character.isDigit(x)) {
       System.out.println("Ошибка: введен не цифровой символ!");
       return -1;
@@ -121,7 +121,7 @@ public class Methods {
 
   // Возвращает строку с числами от 0 до x включительно
   public String listNums(int x) {
-    // Добавлена проверка на отрицательные значения
+    // Проверка на отрицательные значения
     if (x < 0) {
       return "Ошибка: число должно быть неотрицательным!";
     }
@@ -134,7 +134,7 @@ public class Methods {
 
   // Возвращает строку с четными числами от 0 до x
   public String chet(int x) {
-    // Добавлена проверка на отрицательные значения
+    // Проверка на отрицательные значения
     if (x < 0) {
       return "Ошибка: число должно быть неотрицательным!";
     }
@@ -176,7 +176,7 @@ public class Methods {
 
   // Рисует прямоугольный треугольник из звёздочек
   public void rightTriangle(int x) {
-    // Добавлена проверка на отрицательные значения
+    // Проверка на отрицательные значения
     if (x < 0) {
       System.out.println("Ошибка: высота не может быть отрицательной");
       return;
@@ -198,7 +198,7 @@ public class Methods {
 
   // Находит первый индекс элемента в массиве
   public int findFirst(int[] arr, int x) {
-    // Добавлена проверка на пустой массив
+    // Проверка на пустой массив
     if (arr.length == 0) {
       System.out.println("Ошибка: массив пуст!");
       return -1;
@@ -214,7 +214,7 @@ public class Methods {
 
   // Находит элемент с максимальным модулем
   public int maxAbs(int[] arr) {
-    // Добавлена проверка на пустой массив
+    // Проверка на пустой массив
     if (arr.length == 0) {
       System.out.println("Ошибка: массив пуст!");
       return Integer.MIN_VALUE;
@@ -232,7 +232,7 @@ public class Methods {
 //
   // Вставляет один массив в другой на указанную позицию
   public int[] add(int[] arr, int[] ins, int pos) {
-    // Добавлена проверка на корректность позиции
+    // Проверка на корректность позиции
     if (pos < 0 || pos > arr.length) {
       System.out.println("Ошибка: позиция должна быть в диапазоне от 0 до " + arr.length);
       return new int[0];
@@ -273,7 +273,7 @@ public class Methods {
 
   // Возвращает перевернутую копию массива
   public int[] reverseBack(int[] arr) {
-    // Добавлена проверка на пустой массив
+    // Проверка на пустой массив
     if (arr.length == 0) {
       System.out.println("Ошибка: массив пуст!");
       return new int[0];
@@ -287,7 +287,7 @@ public class Methods {
 
   // Находит все индексы вхождения элемента в массив
   public int[] findAll(int[] arr, int x) {
-    // Добавлена проверка на пустой массив
+    // Проверка на пустой массив
     if (arr.length == 0) {
       System.out.println("Ошибка: массив пуст!");
       return new int[0];
@@ -313,7 +313,7 @@ public class Methods {
     if (input.trim().isEmpty()) {
       return new int[0];
     }
-    // Добавлена обработка исключений при парсинге
+    // Обработка исключений при парсинге
     try {
       String[] parts = input.trim().split("\\s+");
       int[] result = new int[parts.length];

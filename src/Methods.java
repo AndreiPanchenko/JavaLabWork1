@@ -10,6 +10,11 @@ public class Methods {
 
   // Конвертирует символ-цифру в соответствующее число
   public int charToNum(char x) {
+    // Добавлена проверка на цифровой символ
+    if (!Character.isDigit(x)) {
+      System.out.println("Ошибка: введен не цифровой символ!");
+      return -1;
+    }
     return x - '0';
   }
 
@@ -79,10 +84,47 @@ public class Methods {
     }
   }
 
+//  public String day(int x) {
+//    String result;
+//    switch (x) {
+//      case 1:
+//        result = "понедельник";
+//        break;
+//      case 2:
+//        result = "вторник";
+//        break;
+//      case 3:
+//        result = "среда";
+//        break;
+//      case 4:
+//        result = "четверг";
+//        break;
+//      case 5:
+//        result = "пятница";
+//        break;
+//      case 6:
+//        result = "суббота";
+//        break;
+//      case 7:
+//        result = "воскресенье";
+//        break;
+//      default:
+//        result = "это не день недели";
+//        break; // break в default не обязателен, но часто добавляют для единообразия
+//    }
+//    return result;
+//  }
+
+
+
   // ========== МЕТОДЫ РАБОТЫ С ЦИКЛАМИ ==========
 
   // Возвращает строку с числами от 0 до x включительно
   public String listNums(int x) {
+    // Добавлена проверка на отрицательные значения
+    if (x < 0) {
+      return "Ошибка: число должно быть неотрицательным!";
+    }
     String result = "";
     for (int i = 0; i <= x; i++) {
       result += i + " ";
@@ -92,9 +134,13 @@ public class Methods {
 
   // Возвращает строку с четными числами от 0 до x
   public String chet(int x) {
+    // Добавлена проверка на отрицательные значения
+    if (x < 0) {
+      return "Ошибка: число должно быть неотрицательным!";
+    }
     String result = "";
     for (int i = 0; i <= x; i += 2) {
-      result += i + " "; 
+      result += i + " ";
     }
     return result.trim();
   }
@@ -104,9 +150,11 @@ public class Methods {
     if (x == 0) {
       return 1;
     }
+    // Исправлено для работы с отрицательными числами
+    long temp = Math.abs(x);
     int count = 0;
-    while (x != 0) {
-      x /= 10;
+    while (temp != 0) {
+      temp /= 10;
       count++;
     }
     return count;
@@ -128,6 +176,11 @@ public class Methods {
 
   // Рисует прямоугольный треугольник из звёздочек
   public void rightTriangle(int x) {
+    // Добавлена проверка на отрицательные значения
+    if (x < 0) {
+      System.out.println("Ошибка: высота не может быть отрицательной");
+      return;
+    }
     for (int i = 1; i <= x; i++) {
       // Печать пробелов
       for (int j = 0; j < x - i; j++) {
@@ -144,7 +197,12 @@ public class Methods {
   // ========== МЕТОДЫ РАБОТЫ С МАССИВАМИ ==========
 
   // Находит первый индекс элемента в массиве
-public int findFirst(int[] arr, int x) {
+  public int findFirst(int[] arr, int x) {
+    // Добавлена проверка на пустой массив
+    if (arr.length == 0) {
+      System.out.println("Ошибка: массив пуст!");
+      return -1;
+    }
     for (int i = 0; i < arr.length; i++) {
       if (arr[i] == x) {
         return i;
@@ -156,7 +214,12 @@ public int findFirst(int[] arr, int x) {
 
   // Находит элемент с максимальным модулем
   public int maxAbs(int[] arr) {
-    int max = Integer.MIN_VALUE;
+    // Добавлена проверка на пустой массив
+    if (arr.length == 0) {
+      System.out.println("Ошибка: массив пуст!");
+      return Integer.MIN_VALUE;
+    }
+    int max = arr[0];
     for (int num : arr) {
       if (Math.abs(num) > Math.abs(max)) {
         max = num;
@@ -165,8 +228,15 @@ public int findFirst(int[] arr, int x) {
     return max;
   }
 
+  //  System.arraycopy(исходный_массив, откуда_копировать, целевой_массив, куда_вставлять, сколько_элементов)
+//
   // Вставляет один массив в другой на указанную позицию
   public int[] add(int[] arr, int[] ins, int pos) {
+    // Добавлена проверка на корректность позиции
+    if (pos < 0 || pos > arr.length) {
+      System.out.println("Ошибка: позиция должна быть в диапазоне от 0 до " + arr.length);
+      return new int[0];
+    }
     int[] result = new int[arr.length + ins.length];
     // Копируем левую часть исходного массива
     System.arraycopy(arr, 0, result, 0, pos);
@@ -177,8 +247,37 @@ public int findFirst(int[] arr, int x) {
     return result;
   }
 
+//  public int[] add(int[] arr, int[] ins, int pos) {
+//    int[] result = new int[arr.length + ins.length];
+//
+//    // Ручное копирование левой части
+//    for (int i = 0; i < pos; i++) {
+//      result[i] = arr[i];
+//    }
+//
+//    // Вставка нового массива
+//    for (int i = 0; i < ins.length; i++) {
+//      result[pos + i] = ins[i];
+//    }
+//
+//    // Копирование правой части
+//    for (int i = pos; i < arr.length; i++) {
+//      result[ins.length + i] = arr[i];
+//    }
+//
+//    return result;
+//  }
+
+
+
+
   // Возвращает перевернутую копию массива
   public int[] reverseBack(int[] arr) {
+    // Добавлена проверка на пустой массив
+    if (arr.length == 0) {
+      System.out.println("Ошибка: массив пуст!");
+      return new int[0];
+    }
     int[] reversed = new int[arr.length];
     for (int i = 0; i < arr.length; i++) {
       reversed[i] = arr[arr.length - 1 - i];
@@ -188,6 +287,11 @@ public int findFirst(int[] arr, int x) {
 
   // Находит все индексы вхождения элемента в массив
   public int[] findAll(int[] arr, int x) {
+    // Добавлена проверка на пустой массив
+    if (arr.length == 0) {
+      System.out.println("Ошибка: массив пуст!");
+      return new int[0];
+    }
     int count = 0;
     for (int num : arr) {
       if (num == x) {
@@ -209,13 +313,17 @@ public int findFirst(int[] arr, int x) {
     if (input.trim().isEmpty()) {
       return new int[0];
     }
-    String[] parts = input.trim().split("\\s+");
-    int[] result = new int[parts.length];
-    for (int i = 0; i < parts.length; i++) {
-      result[i] = Integer.parseInt(parts[i]);
+    // Добавлена обработка исключений при парсинге
+    try {
+      String[] parts = input.trim().split("\\s+");
+      int[] result = new int[parts.length];
+      for (int i = 0; i < parts.length; i++) {
+        result[i] = Integer.parseInt(parts[i]);
+      }
+      return result;
+    } catch (NumberFormatException e) {
+      System.out.println("Ошибка: в массиве должны быть только целые числа!");
+      return new int[0];
     }
-    return result;
   }
 }
-
-
